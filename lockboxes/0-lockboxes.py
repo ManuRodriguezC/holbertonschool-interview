@@ -23,6 +23,8 @@ def canUnlockAll(boxes):
                 result = "true"
             if num - boxes[x][i] == pos and result != "true":
                 result = "true"
+            if boxes[x][i] == pos - 1:
+                result = "true"
             if boxes[x][i] != pos and result != "true":
                 result = "false"
             num = boxes[x][i]
