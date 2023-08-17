@@ -10,7 +10,7 @@ def canUnlockAll(boxes):
     Need to find the correct number,
     the number is the pisition of the next box
     """
-    if len(boxes) == 0:
+    if boxes == [[0]]:
         return True
     pos = 1
     num = boxes[0][0]
