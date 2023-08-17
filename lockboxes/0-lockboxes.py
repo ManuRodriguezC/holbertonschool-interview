@@ -31,7 +31,7 @@ def canUnlockAll(boxes):
             num = boxes[x][i]
         pos += 1
         if result == "false":
-           return False
+            return False
     if result == "true":
         return True
     return False
