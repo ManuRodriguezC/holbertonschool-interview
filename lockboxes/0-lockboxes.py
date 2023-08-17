@@ -18,13 +18,10 @@ def canUnlockAll(boxes):
         result = ""
         for i in range(len(boxes[x])):
             if boxes[x][i] == pos:
-                print(f"{boxes[x][i]} = {pos}")
                 result = "true"
             if num + boxes[x][i] == pos and result != "true":
-                print(f"{boxes[x][i]} + {num} = {pos}")
                 result = "true"
             if num - boxes[x][i] == pos and result != "true":
-                print(f"{boxes[x][i]} - {num} = {pos}")
                 result = "true"
             if boxes[x][i] != pos and result != "true":
                 result = "false"
