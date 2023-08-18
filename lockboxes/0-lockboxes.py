@@ -6,31 +6,26 @@ the specific number that lock the boxes
 
 
 def canUnlockAll(boxes):
-    """
-    Need to find the correct number,
-    the number is the pisition of the next box
-    """
-    if boxes == [[0]]:
-        return True
-    pos = 1
-    num = boxes[0][0]
-    for x in range(len(boxes) - 1):
-        result = ""
-        for i in range(len(boxes[x])):
-            if boxes[x][i] == pos:
-                result = "true"
-            if num + boxes[x][i] == pos and result != "true":
-                result = "true"
-            if num - boxes[x][i] == pos and result != "true":
-                result = "true"
-            if boxes[x][i] == pos - 1:
-                result = "true"
-            if boxes[x][i] != pos and result != "true":
-                result = "false"
-            num = boxes[x][i]
-        pos += 1
-        if result == "false":
-            return False
-    if result == "true":
-        return True
-    return False
+    # Initialize a set to keep track of opened boxes
+    opened_boxes = {0}
+
+    # Initialize a set to store newly discovered boxes
+    new_boxes = {0}
+
+    # Iterate through the newly discovered boxes set
+    while new_boxes:
+        # Create a copy of the new boxes set
+        current_boxes = new_boxes.copy()
+        new_boxes.clear()
+        # Iterate through the current boxes set
+        for box in current_boxes:
+            # Iterate through the keys in the current box
+            for key in boxes[box]:
+                print(key)
+                # Add the key to the set of opened boxes
+                if key < len(boxes) and key not in opened_boxes:
+                    opened_boxes.add(key)
+                    new_boxes.add(key)
+
+    # Check if all boxes have been opened
+    return len(opened_boxes) == len(boxes)
