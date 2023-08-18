@@ -6,6 +6,10 @@ the specific number that lock the boxes
 
 
 def canUnlockAll(boxes):
+    """
+    The boxes contain a list of the list, this function
+    found the list contain the numbers that open the all lists
+    """
     # Initialize a set to keep track of opened boxes
     opened_boxes = {0}
 
@@ -21,8 +25,6 @@ def canUnlockAll(boxes):
         for box in current_boxes:
             # Iterate through the keys in the current box
             for key in boxes[box]:
-                print(key)
-                # Add the key to the set of opened boxes
                 if key < len(boxes) and key not in opened_boxes:
                     opened_boxes.add(key)
                     new_boxes.add(key)
