@@ -2,7 +2,6 @@
 #include <string.h>
 #include <stdio.h>
 #include "lists.h"
-#include "0-insert_number.c"
 
 /**
  * main - check the code for Holberton School students.
