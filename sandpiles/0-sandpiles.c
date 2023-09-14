@@ -12,7 +12,8 @@ void sum_grids(int grid1[3][3], int grid2[3][3])
 {
 	size_t row, col;
 
-	for (row = 0; row < 3; row++) {
+	for (row = 0; row < 3; row++)
+    {
 		for (col = 0; col < 3; col++)
 			grid1[row][col] += grid2[row][col];
 	}
@@ -28,7 +29,8 @@ void copy_grid(int origin[3][3], int copy[3][3])
 {
 	size_t row, col;
 
-	for (row = 0; row < 3; row++){
+	for (row = 0; row < 3; row++)
+    {
 		for (col = 0; col < 3; col++)
 			copy[row][col] = origin[row][col];
 	}
