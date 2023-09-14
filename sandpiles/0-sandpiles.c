@@ -3,8 +3,8 @@
 #include <stdbool.h>
 
 /**
- * add_grid - Add two grids, grid2 to grid1.
- * @grid1 Grid 1 that add to greid 2.
+ * sum_grids - Add two grids, grid2 to grid1.
+ * @grid1 :Grid 1 that add to greid 2.
  * @grid2: Grid 2'
  * Return: The new grid
  */
@@ -12,8 +12,7 @@ void sum_grids(int grid1[3][3], int grid2[3][3])
 {
 	size_t row, col;
 
-	for (row = 0; row < 3; row++)
-    {
+	for (row = 0; row < 3; row++) {
 		for (col = 0; col < 3; col++)
 			grid1[row][col] += grid2[row][col];
 	}
@@ -29,8 +28,7 @@ void copy_grid(int origin[3][3], int copy[3][3])
 {
 	size_t row, col;
 
-	for (row = 0; row < 3; row++)
-    {
+	for (row = 0; row < 3; row++){
 		for (col = 0; col < 3; col++)
 			copy[row][col] = origin[row][col];
 	}
