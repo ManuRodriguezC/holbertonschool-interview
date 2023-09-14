@@ -3,8 +3,8 @@
 #include <stdbool.h>
 
 /**
- * add_grid - Add two grids, grid2 to grid1,
- * @grid1: Grid 1 that add to greid 2.
+ * add_grid - Add two grids, grid2 to grid1.
+ * @grid1 Grid 1 that add to greid 2.
  * @grid2: Grid 2'
  * Return: The new grid
  */
@@ -12,10 +12,10 @@ void sum_grids(int grid1[3][3], int grid2[3][3])
 {
 	size_t row, col;
 
-	for (row = 0; row < 3; row++) {
-		for (col = 0; col < 3; col++) {
+	for (row = 0; row < 3; row++)
+    {
+		for (col = 0; col < 3; col++)
 			grid1[row][col] += grid2[row][col];
-		}
 	}
 }
 
@@ -28,10 +28,11 @@ void sum_grids(int grid1[3][3], int grid2[3][3])
 void copy_grid(int origin[3][3], int copy[3][3])
 {
 	size_t row, col;
-	for (row = 0; row < 3; row++) {
-		for (col = 0; col < 3; col++) {
+
+	for (row = 0; row < 3; row++)
+    {
+		for (col = 0; col < 3; col++)
 			copy[row][col] = origin[row][col];
-		}
 	}
 }
 
@@ -59,9 +60,12 @@ bool copy_and_topple(int current_grid[3][3], int future_grid[3][3])
 
 	copy_grid(current_grid, future_grid);
 
-	for (row = 0; row < 3; row++) {
-		for (col = 0; col < 3; col++) {
-			if (current_grid[row][col] > 3) {
+	for (row = 0; row < 3; row++)
+    {
+		for (col = 0; col < 3; col++)
+        {
+			if (current_grid[row][col] > 3)
+            {
 				grid_was_stable = false;
 
 				future_grid[row][col] -= 4;
