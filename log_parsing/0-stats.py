@@ -3,4 +3,5 @@
 import sys
 
 
-print(sys.stdin)
+def log_parsing():
+    print(sys.stdin)
