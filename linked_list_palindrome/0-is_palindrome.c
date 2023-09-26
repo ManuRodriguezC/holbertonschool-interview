@@ -21,6 +21,7 @@ int is_palindrome(listint_t **head)
         fast = fast->next->next;
         next = slow->next;
         slow->next = prev;
+        prev = slow;
         slow = next;
     }
 
