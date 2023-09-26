@@ -1,14 +1,40 @@
 #!/usr/bin/python3
-"""This module is of log_parsing"""
+"""This module give stdin values, and count of the types status and sizes"""
 import sys
 
 
-total_size = 0
-status_counts = {}
+def log_parsin():
+    """
+    This function count the status
+    and sum the files
+    """
+    total_size = 0
+    status_counts = {}
 
-try:
-    for count, line in enumerate(sys.stdin, start=1):
-        print(line)
+    try:
+        for line_num, line in enumerate(sys.stdin, start=1):
+            parts = line.split()
+            if len(parts) < 7:
+                continue
+            status = parts[-2]
+            file_size = int(parts[-1])
 
-except KeyboardInterrupt:
-    print("cerro")
+            total_size += file_size
+
+            if status.isdigit():
+                status = int(status)
+                status_counts[status] = status_counts.get(status, 0) + 1
+
+            if line_num % 10 == 0:
+                print(f"File size: {total_size}")
+                for code, count in sorted(status_counts.items()):
+                    print(f"{code}: {count}")
+
+    except KeyboardInterrupt:
+        print(f"File size: {total_size}")
+        for code, count in sorted(status_counts.items()):
+            print(f"{code}: {count}")
+
+
+if __name__ == '__main__':
+    log_parsin()
