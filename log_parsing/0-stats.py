@@ -8,7 +8,10 @@ status_counts = {}
 
 try:
     for count, line in enumerate(sys.stdin, start=1):
-        print(line)
+        dates = line.split()
+        size = line[-1]
+        status = line[-2]
+        print(f"size {size}, status {status}")
 
 except KeyboardInterrupt:
     print("cerro")
