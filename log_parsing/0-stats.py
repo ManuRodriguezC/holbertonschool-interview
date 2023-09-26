@@ -7,6 +7,7 @@ total_size = 0
 status_counts = {}
 
 try:
+    # Count and sum
     for line_num, line in enumerate(sys.stdin, start=1):
             parts = line.split()
             if len(parts) < 7:
@@ -16,9 +17,8 @@ try:
 
             total_size += file_size
 
-            if status.isdigit():
-                status = int(status)
-                status_counts[status] = status_counts.get(status, 0) + 1
+            status = int(status)
+            status_counts[status] = status_counts.get(status, 0) + 1
 
             if line_num % 10 == 0:
                 print(f"File size: {total_size}")
