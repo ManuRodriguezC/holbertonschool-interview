@@ -1,10 +1,13 @@
 #!/usr/bin/python3
-"""This module give stdin values, and count of the types status and sizes."""
+"""This module give stdin values, and count of the types status and sizes"""
 import sys
 
 
 def log_parsin():
-    """This function count the status and sum the files"""
+    """
+    This function count the status
+    and sum the files
+    """
     total_size = 0
     status_counts = {}
 
