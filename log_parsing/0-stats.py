@@ -1,5 +1,8 @@
 #!/usr/bin/python3
-"""This module give stdin values, and count of the types status and sizes"""
+"""
+This module give stdin values, and count
+of the types status and sizes
+"""
 import sys
 
 
