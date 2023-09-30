@@ -1,10 +1,8 @@
 #!/usr/bin/python3
 """
-This module give stdin values, and count
-of the types status and sizes
+Module that parses a log and prints stats to stdout
 """
-import sys
-
+from sys import stdin
 
 total_size = 0
 status_counts = {}
@@ -17,9 +15,9 @@ def print_status():
         print(f"{code}: {count}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":    
     try:
-        for line_num, line in enumerate(sys.stdin, start=1):
+        for line_num, line in enumerate(stdin, start=1):
             parts = line.split()
             if len(parts) < 7:
                 continue
@@ -37,3 +35,5 @@ if __name__ == '__main__':
 
     except KeyboardInterrupt:
         print_status()
+        raise
+    print_status()
