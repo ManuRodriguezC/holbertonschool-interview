@@ -1,36 +1,47 @@
 #!/usr/bin/python3
 """
-This module give stdin values, and count
-of the types status and sizes
+Module that parses a log and prints stats to stdout
 """
-import sys
+from sys import stdin
+
+status_codes = {
+    "200": 0,
+    "301": 0,
+    "400": 0,
+    "401": 0,
+    "403": 0,
+    "404": 0,
+    "405": 0,
+    "500": 0
+}
+
+size = 0
 
 
-total_size = 0
-status_counts = {}
+def print_stats():
+    """Prints the accumulated logs"""
+    print("File size: {}".format(size))
+    for status in sorted(status_codes.keys()):
+        if status_codes[status]:
+            print("{}: {}".format(status, status_codes[status]))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
+    count = 0
     try:
-        for line_num, line in enumerate(sys.stdin, start=1):
-            parts = line.split()
-            if len(parts) < 7:
-                continue
-            status = parts[-2]
-            file_size = int(parts[-1])
-
-            total_size += file_size
-
-            if status.isdigit():
-                status = int(status)
-                status_counts[status] = status_counts.get(status, 0) + 1
-
-            if line_num % 10 == 0:
-                print(f"File size: {total_size}")
-                for code, count in sorted(status_counts.items()):
-                    print(f"{code}: {count}")
-
+        for line in stdin:
+            try:
+                items = line.split()
+                size += int(items[-1])
+                if items[-2] in status_codes:
+                    status_codes[items[-2]] += 1
+            except:
+                pass
+            if count == 9:
+                print_stats()
+                count = -1
+            count += 1
     except KeyboardInterrupt:
-        print(f"File size: {total_size}")
-        for code, count in sorted(status_counts.items()):
-            print(f"{code}: {count}")
+        print_stats()
+        raise
+    print_stats()
