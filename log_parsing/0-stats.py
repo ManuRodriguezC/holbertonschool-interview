@@ -3,14 +3,11 @@
 import sys
 
 
-def log_parsin():
-    """
-    This function count the status
-    and sum the files
-    """
-    total_size = 0
-    status_counts = {}
+total_size = 0
+status_counts = {}
 
+
+if __name__ == '__main__':
     try:
         for line_num, line in enumerate(sys.stdin, start=1):
             parts = line.split()
@@ -34,7 +31,3 @@ def log_parsin():
         print(f"File size: {total_size}")
         for code, count in sorted(status_counts.items()):
             print(f"{code}: {count}")
-
-
-if __name__ == '__main__':
-    log_parsin()
