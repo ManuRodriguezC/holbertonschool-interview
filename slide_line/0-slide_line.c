@@ -11,48 +11,44 @@
 */
 int slide_line(int *line, size_t size, int direction)
 {
-    int i, pos, s = size;
+   int i, pos, temp, s = size;
 
-    if (direction != SLIDE_LEFT && direction != SLIDE_RIGHT)
-        return 0;
+   if (direction != SLIDE_LEFT && direction != SLIDE_RIGHT)
+       return 0;
 
-    if (direction == SLIDE_LEFT)
-    {
-        for (i = 0; i < s; i++)
-        {
-            for (pos = s - 1; pos > 0; pos --)
+   if (direction == SLIDE_LEFT)
+   {
+       for (i = 0; i < s; i++)
+       {
+            if (line[i] != 0 && line[i] == line[i + 1])
             {
-                if (line[i] != 0 && line[i] == line[i - 1])
+                line[i] *= 2;
+                line[i + 1] = 0;
+                for (pos = i + 1; pos < s; pos++)
                 {
-                    line[i - 1] *= 2;
-                    line[i] = 0;
-                }
-                if (line[pos] != 0 && line[pos - 1] == 0)
-                {
-                    line[pos - 1] = line[pos];
-                    line[pos] = 0;
+                    temp = line[pos];
+                    line[pos] = line[pos + 1];
+                    line[pos + 1] = line[pos];
                 }
             }
-        }
-    }
-    else
-    {
+       }
+   }
+   else
+   {
         for (i = s; i > 0; i--)
         {
-            for (pos = 0; pos < s - 1; pos ++)
+            if (line[i] != 0 && line[i] == line[i - 1])
             {
-                if (line[i] != 0 && line[i] == line[i + 1])
+                line[i] *= 2;
+                line[i - 1] = 0;
+                for (pos = i - 1; pos > 0; pos--)
                 {
-                    line[i + 1] *= 2;
-                    line[i] = 0;
-                }
-                if (line[pos] != 0 && line[pos + 1] == 0)
-                {
-                    line[pos + 1] = line[pos];
-                    line[pos] = 0;
+                    temp = line[pos];
+                    line[pos] = line[pos - 1];
+                    line[pos - 1] = temp;
                 }
             }
         }
-    }
-    return 1;
+   }
+   return 1;
 }
