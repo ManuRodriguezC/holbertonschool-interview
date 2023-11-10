@@ -104,12 +104,16 @@ update_values(&r1, &r2);
 update_values(&r2, &r3);
 update_values(&r3, &r4);
 if (r4 == 4)
-    r4 = 1;
+{
+r4 = 1;
+}
 update_values(&c1, &c2);
 update_values(&c2, &c3);
 update_values(&c3, &c4);
 if (c4 == 4)
-    c4 = 1;
+{
+c4 = 1;
+}
 print_menger(posx, posy, col, row, c1, r1, r2, c2, r3, c3, r4, c4);
 posx++;
 }
@@ -119,10 +123,14 @@ set_values(&c2, 1);
 set_values(&c1, 1);
 set_values(&col, 0);
 if (posy == 3)
-    row++;
+{
+row++;
+}
 update_values(&row, &r1);
 if (posy == 4)
-    posy = 1;
+{
+posy = 1;
+}
 update_values(&c1, &c2);
 update_values(&c2, &c3);
 update_values(&c3, &c4);
