@@ -65,7 +65,6 @@ void set_values(int *value, int new_value)
  *
  * @value: Pointer to the first integer variable.
  * @increment: Pointer to the second integer variable.
- * @equal_number: The number to compare with the first variable.
  */
 void update_values(int *value, int *increment)
 {
