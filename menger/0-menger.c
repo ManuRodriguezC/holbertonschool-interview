@@ -43,25 +43,6 @@ printf("#");
 }
 }
 
-
-/**
- * update_values - This function compares the first variable with a
- * given number. If they are equal,
- * it sets the first variable to 1 and increments the second variable by 1.
- *
- * @value: Pointer to the first integer variable.
- * @increment: Pointer to the second integer variable.
- * @equal_number: The number to compare with the first variable.
- */
-void update_values(int *value, int *increment, int equal_number)
-{
-if (*value == equal_number)
-{
-*value = 1;
-(*increment)++;
-}
-}
-
 /**
  * set_values - Set a new value to a variable
  * @value: A pointer to the variable that we want to change
@@ -75,6 +56,24 @@ if (*value == equal_number)
 void set_values(int *value, int new_value)
 {
 *value = new_value;
+}
+
+/**
+ * update_values - This function compares the first variable with a
+ * given number. If they are equal,
+ * it sets the first variable to 1 and increments the second variable by 1.
+ *
+ * @value: Pointer to the first integer variable.
+ * @increment: Pointer to the second integer variable.
+ * @equal_number: The number to compare with the first variable.
+ */
+void update_values(int *value, int *increment)
+{
+if (*value == 4)
+{
+*value = 1;
+(*increment)++;
+}
 }
 
 /**
@@ -100,16 +99,18 @@ for (y = 1; y <= size; y++)
 {
 for (x = 1; x <= size; x++)
 {
-update_values(&posx, &col, 4);
-update_values(&col, &c1, 4);
-update_values(&r1, &r2, 4);
-update_values(&r2, &r3, 4);
-update_values(&r3, &r4, 4);
-update_values(&r4, NULL, 4);
-update_values(&c1, &c2, 4);
-update_values(&c2, &c3, 4);
-update_values(&c3, &c4, 4);
-update_values(&c4, NULL, 4);
+update_values(&posx, &col);
+update_values(&col, &c1);
+update_values(&r1, &r2);
+update_values(&r2, &r3);
+update_values(&r3, &r4);
+if (r4 == 4)
+    r4 = 1;
+update_values(&c1, &c2);
+update_values(&c2, &c3);
+update_values(&c3, &c4);
+if (c4 == 4)
+    c4 = 1;
 print_menger(posx, posy, col, row, c1, r1, r2, c2, r3, c3, r4, c4);
 posx++;
 }
@@ -118,18 +119,14 @@ set_values(&c3, 1);
 set_values(&c2, 1);
 set_values(&c1, 1);
 set_values(&col, 0);
-update_values(&row, &r1, 4);
-update_values(&c1, &c2, 4);
-update_values(&c2, &c3, 4);
-update_values(&c3, &c4, 4);
 if (posy == 3)
-{
-row++;
-}
+    row++;
+update_values(&row, &r1);
 if (posy == 4)
-{
-posy = 1;
-}
+    posy = 1;
+update_values(&c1, &c2);
+update_values(&c2, &c3);
+update_values(&c3, &c4);
 printf("\n");
 posy++;
 }
