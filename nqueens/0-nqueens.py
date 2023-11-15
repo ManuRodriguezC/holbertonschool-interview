@@ -45,7 +45,6 @@ def solve_n_queens(N):
             return True
         for row in range(N):
             if is_safe(positions, row, col):
-                print(positions)
                 recursive(col + 1, positions + [row])
         return False
 
